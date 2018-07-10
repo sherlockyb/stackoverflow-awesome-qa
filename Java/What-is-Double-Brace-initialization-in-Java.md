@@ -85,7 +85,7 @@ public class ReallyHeavyObject {
 
 返回的Map现在将包含对宿主类ReallyHeavyObject的实例引用。你可能不想冒这个风险：
 
-![](images\1.png)
+![](https://github.com/sherlockyb/stackoverflow-awesome-qa/raw/master/Java/images/1.png)
 
 ### No.3
 
