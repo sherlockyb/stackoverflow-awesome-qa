@@ -91,3 +91,29 @@ public class ReallyHeavyObject {
 
 - 第一个大括号创建一个新的匿名内部类
 - 第二组大括号创建一个实例初始化器，如Class中的静态块。
+
+例如：
+
+```java
+public class TestHashMap {
+    public static void main(String[] args) {
+        HashMap<String,String> map = new HashMap<String,String>(){
+            {
+                put("1", "ONE");
+            }{
+                put("2", "TWO");
+            }{
+                put("3", "THREE");
+            };
+        }
+        Set<String> keySet = map.keySet();
+        for (String string: keySet) {
+            System.out.println(string+" ->"+map.get(string));
+        }
+    }
+}
+```
+
+第一个括号创建一个新的匿名内部类。这些内部类能够访问其父类的行为。所以，在我们的例子中，我们实际上是在创建一个HashSet类的子类，所以这个内部类能够使用add()方法
+
+第二组大括号只不过是实例初始化器。由于类似大括号的结构，我们可以很容易地将实例初始化程序块与静态初始化程序相关联。唯一的区别是静态初始化程序添加了静态关键字，并且无论你创建多少个对象，都只运行一次;
