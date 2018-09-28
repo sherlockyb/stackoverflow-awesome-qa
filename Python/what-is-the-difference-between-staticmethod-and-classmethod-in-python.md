@@ -86,8 +86,6 @@ print(A.static_foo)
 # <function static_foo at 0xb7d479cc>
 ```
 
-
-
 ### No.2
 
 说一下@classmethod和@staticmethod修饰的方法之间的相似性与差异性：
@@ -124,4 +122,32 @@ print(A.static_foo)
 >>> Klaus.staticmthd('chumma')
 ('chumma',)
 ```
+
+### No.3
+
+要决定是否使用**@staticmethod**或**@classmethod**，得看你方法的内部实现：如果方法中访问了类中的其他变量或方法，则使用**@classmethod**。否则，如果你的方法没有接触到类的任何其他部分，那么使用**@staticmethod**。
+
+```python
+class Apple:
+    _counter = 0
+    @staticmethod
+    def about_apple():
+        print('Apple is good for you.')
+        # 注意，你仍然可以访问该类的其他成员，只不过你得用class实例，这种方式毕竟不太优雅，例如：
+        # @staticmethod
+        #	print('Number of apples have been juiced:%s' % Apple._counter)
+    @classmethod
+    def make_apple_juice(cls, number_of_apples):
+        print('Make juice:')
+        for i in range(number_of_apples):
+            cls._juice_this(i)
+    @classmethod
+    def _juice_this(cls, apple):
+        print('Juicing %d...' % apple)
+        cls._counter += 1
+```
+
+
+
+
 
