@@ -116,3 +116,30 @@ class MyClass(BaseClass):
 ## 答案
 
 ### No.1
+
+**使用元类**
+
+我推荐上述的方法二，但最好使用使用元类而不是基类。如下是一个示例实现：
+
+```python
+class Singleton(type):
+    _instances = {}
+    def __call__(cls, *args, **kwargs):
+        if cls not in cls._instances:
+            cls._instances[cls] = super(Singleton, cls).__call__(*args, **kwargs)
+        return cls._instances[cls]
+# python2    
+class Logger(object):
+    __metaclass__ = Singleton
+# python3
+class Logger(metaclass=Singleton):
+    pass
+```
+
+如果要在每次调用类时运行`__init__`，添加如下代码到`if`分支
+
+```python
+		else:
+        	cls._instances[cls].__init__(*args, **kwargs)
+```
+
