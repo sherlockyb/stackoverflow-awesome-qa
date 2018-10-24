@@ -119,7 +119,7 @@ class MyClass(BaseClass):
 
 **使用元类**
 
-我推荐上述的方法二，但最好使用使用元类而不是基类。如下是一个示例实现：
+我推荐上述的方法二，但最好使用元类而不是基类。如下是一个示例实现：
 
 ```python
 class Singleton(type):
@@ -139,7 +139,7 @@ class Logger(metaclass=Singleton):
 如果要在每次调用类时运行`__init__`，添加如下代码到`if`分支
 
 ```python
-		else:
-        	cls._instances[cls].__init__(*args, **kwargs)
+        else:
+            cls._instances[cls].__init__(*args, **kwargs)
 ```
 
