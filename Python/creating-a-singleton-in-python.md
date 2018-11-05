@@ -143,3 +143,4 @@ class Logger(metaclass=Singleton):
             cls._instances[cls].__init__(*args, **kwargs)
 ```
 
+关于元类有几点补充。元类是类的类，也就是说，类是其元类的实例。在Python中，你可以通过`type(obj)`获取对象`obj`的元类。上面代码中的`Logger`类型为'your_module.Singleton'类型，就像`Logger`的（唯一）实例类型为'your_module.Logger'类型一样。当你使用Logger()调用logger时，Python首先会询问`Logger`，`Singleton`的元类，该怎么做，并允许实例被抢占式的创建。此过程与当你通过`myclass.attribute`引用一个类的属性时，Python通过调用`__getattr__`向该类询问该如何做，是一个道理。
