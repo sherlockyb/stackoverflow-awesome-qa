@@ -177,5 +177,13 @@ class Logger(Singleton):
 
 比较讽刺的一点是，该方法是使用子类来实现元类的。一个可能的优点是，与纯元类不同，`isinstance(inst, Singleton)`将返回True。
 
+### No.2
 
+```python
+class Foo(object):
+    pass
+some_global_variable = Foo()
+```
+
+python的模块只导入一次，其他都是过度思考。不要使用单例并尽量不使用全局变量。
 
