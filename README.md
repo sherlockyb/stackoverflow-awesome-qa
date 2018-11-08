@@ -12,5 +12,5 @@
 ### Python
 
 - [x] [Python中的@staticmethod和@classmethod有什么差异](Python/what-is-the-difference-between-staticmethod-and-classmethod-in-python.md)【原问题：[136097-What is the difference between @staticmethod and @classmethod in Python?](https://stackoverflow.com/questions/136097/what-is-the-difference-between-staticmethod-and-classmethod-in-python)】
-- [ ] [在Python中创建单例](Python/creating-a-singleton-in-python.md)【原问题：[6760685-creating-a-singleton-in-python](https://stackoverflow.com/questions/6760685/creating-a-singleton-in-python)】
+- [x] [在Python中创建单例](Python/creating-a-singleton-in-python.md)【原问题：[6760685-creating-a-singleton-in-python](https://stackoverflow.com/questions/6760685/creating-a-singleton-in-python)】
 
