@@ -87,3 +87,62 @@ print ExampleSibling
 print ExampleSibling.__mro__
 ```
 
+### No.2
+
+**类也是对象**
+
+在理解元类之前，你需要掌握Python中的类。借鉴Smalltalk语言，Python对于类是什么有一个非常奇特的构想。
+
+在大多数语言中，类就是描述如何生成对象的代码片段。这一点在Python中也是成立的。
+
+```python
+>>> class ObjectCreator(object):
+...		pass
+...
+>>> my_object = ObjectCreator()
+>>> print(my_object)
+<__main__.ObjectCreator object at 0x8974f2c>
+```
+
+但是Python中的类远不止如此。类也是对象。只要你使用关键字`class`，Python将执行它并创建一个对象。下面的代码：
+
+```python
+>>> class ObjectCreator(object):
+... 	pass
+...
+```
+
+会在内存中创建一个对象，名称就是`ObjectCreator`。
+
+该对象（类）本身具有创建对象（类实例）的能力，而这就是为什么它是一个类的原因。但是，它本质上仍然是一个对象，因而你能对其做如下操作：
+
+- 你可以将其赋值给一个变量
+- 你可以拷贝它
+- 你可以为其添加属性
+- 你可以将它作为函数参数传递
+
+例如：
+
+```python
+>>> print(ObjectCreator) # 你可以打印一个类，因为它本身就是个对象
+<class '__main__.ObjectCreator'>
+>>> def echo(o):
+...		print(o)
+>>> echo(ObjectCreator) # 你能一个类作为参数传递
+<class '__main__.ObjectCreator'>
+>>> print(hasattr(ObjectCreator, 'new_attribute'))
+False
+>>> ObjectCreator.new_attribute = 'foo' # 你能向一个类添加新属性
+>>> print(hasattr(ObjectCreator, 'new_attribute'))
+True
+>>> print(ObjectCreator.new_attribute)
+foo
+>>> ObjectCreatorMirror = ObjectCreator # 你能将一个类赋值给一个变量
+>>> print(ObjectCreatorMirror.new_attribute)
+foo
+>>> print(ObjectCreatorMirror())
+<__main__.ObjectCreator object at 0x8997b4c>
+```
+
+**动态地创建类**
+
